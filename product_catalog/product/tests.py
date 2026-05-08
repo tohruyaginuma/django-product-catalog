@@ -34,53 +34,53 @@ class ListProductsTest(TestCase):
         self.product_c.tags.set([self.tag_sale, self.tag_new])
 
     def test_no_filters_returns_all(self):
-        result = list_products()
-        self.assertEqual(result.count(), 3)
+        products, count = list_products()
+        self.assertEqual(count, 3)
 
     def test_filter_by_description(self):
-        result = list_products(description='laptop')
-        self.assertEqual(result.count(), 1)
-        self.assertEqual(result.first(), self.product_a)
+        products, count = list_products(description='laptop')
+        self.assertEqual(count, 1)
+        self.assertEqual(products[0], self.product_a)
 
     def test_filter_by_description_case_insensitive(self):
-        result = list_products(description='LAPTOP')
-        self.assertEqual(result.count(), 1)
+        products, count = list_products(description='LAPTOP')
+        self.assertEqual(count, 1)
 
     def test_filter_by_category_ids(self):
-        result = list_products(category_ids=[self.category_a.id])
-        self.assertEqual(result.count(), 2)
+        products, count = list_products(category_ids=[self.category_a.id])
+        self.assertEqual(count, 2)
 
     def test_filter_by_multiple_category_ids(self):
-        result = list_products(category_ids=[self.category_a.id, self.category_b.id])
-        self.assertEqual(result.count(), 3)
+        products, count = list_products(category_ids=[self.category_a.id, self.category_b.id])
+        self.assertEqual(count, 3)
 
     def test_filter_by_tag_ids(self):
-        result = list_products(tag_ids=[self.tag_sale.id])
-        self.assertEqual(result.count(), 2)
+        products, count = list_products(tag_ids=[self.tag_sale.id])
+        self.assertEqual(count, 2)
 
     def test_filter_by_multiple_tag_ids_is_or(self):
-        result = list_products(tag_ids=[self.tag_sale.id, self.tag_new.id])
-        self.assertEqual(result.count(), 3)
+        products, count = list_products(tag_ids=[self.tag_sale.id, self.tag_new.id])
+        self.assertEqual(count, 3)
 
     def test_combine_description_and_category(self):
-        result = list_products(description='python', category_ids=[self.category_b.id])
-        self.assertEqual(result.count(), 1)
-        self.assertEqual(result.first(), self.product_b)
+        products, count = list_products(description='python', category_ids=[self.category_b.id])
+        self.assertEqual(count, 1)
+        self.assertEqual(products[0], self.product_b)
 
     def test_combine_description_and_tag(self):
-        result = list_products(description='smartphone', tag_ids=[self.tag_sale.id])
-        self.assertEqual(result.count(), 1)
-        self.assertEqual(result.first(), self.product_c)
+        products, count = list_products(description='smartphone', tag_ids=[self.tag_sale.id])
+        self.assertEqual(count, 1)
+        self.assertEqual(products[0], self.product_c)
 
     def test_combine_description_category_and_tag(self):
-        result = list_products(
+        products, count = list_products(
             description='laptop',
             category_ids=[self.category_a.id],
             tag_ids=[self.tag_sale.id],
         )
-        self.assertEqual(result.count(), 1)
-        self.assertEqual(result.first(), self.product_a)
+        self.assertEqual(count, 1)
+        self.assertEqual(products[0], self.product_a)
 
     def test_no_match_returns_empty(self):
-        result = list_products(description='nonexistent')
-        self.assertEqual(result.count(), 0)
+        products, count = list_products(description='nonexistent')
+        self.assertEqual(count, 0)
