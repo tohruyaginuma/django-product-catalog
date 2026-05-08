@@ -31,6 +31,13 @@ Open http://127.0.0.1:8000
 
 ## Design Notes
 
+**Model relationships**
+
+- `Product` → `Category`: Many-to-one (ForeignKey). A product belongs to exactly one category. This reflects a common catalog design where a product has a single primary classification.
+- `Product` ↔ `Tag`: Many-to-many (via `ProductTag`). Tags represent cross-cutting attributes (e.g. "Sale", "New") that can apply to any product regardless of category.
+
+**Service layer**
+
 Services are split by responsibility:
 - `category_service`, `tag_service`: single aggregate operations
 - `product_query_service`: cross-aggregate query (Product + Category + Tag)
