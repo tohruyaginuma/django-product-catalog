@@ -7,6 +7,7 @@ A Django project that models products, categories, and tags with search and filt
 **Requirements**: Python 3.10+
 
 ```bash
+cp .env.example .env
 make install
 make setup
 make up
