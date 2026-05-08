@@ -37,6 +37,6 @@ This project was developed with Claude Code assistance. All code has been review
 - Discussing design decisions:
   - Service layer structure
   - Error handling
-  - Model explicity
+  - Model explicitness
   - Frontend design
 - Creating Makefile and README
