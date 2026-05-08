@@ -8,6 +8,3 @@ select = ["E", "F", "I"]
 
 [tool.ruff.format]
 quote-style = "single"
-
-[tool.ruff.lint.per-file-ignores]
-"product_catalog/product_catalog/settings.py" = ["F401"]
