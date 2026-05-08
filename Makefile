@@ -16,5 +16,11 @@ up:
 test:
 	$(MANAGE) test product
 
+lint:
+	.venv/bin/ruff check product_catalog
+
+format:
+	.venv/bin/ruff format product_catalog
+
 manage:
 	$(MANAGE) $(cmd)

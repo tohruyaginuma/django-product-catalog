@@ -25,6 +25,8 @@ Open http://127.0.0.1:8000
 | `make seed` | Populate seed data |
 | `make up` | Start development server |
 | `make test` | Run tests |
+| `make lint` | Run linter (ruff) |
+| `make format` | Auto-format code (ruff) |
 | `make manage cmd="<command>"` | Run any Django management command |
 
 ## Design Notes
