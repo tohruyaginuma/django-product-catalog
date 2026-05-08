@@ -1,3 +1,24 @@
 from django.contrib import admin
 
-# Register your models here.
+from product.models import Category, Tag, Product, ProductTag
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'created_at')
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'created_at')
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'description', 'category', 'created_at')
+    list_filter = ('category',)
+
+
+@admin.register(ProductTag)
+class ProductTagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'product_id', 'tag_id', 'created_at')
