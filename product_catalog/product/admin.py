@@ -15,8 +15,12 @@ class TagAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'category', 'created_at')
+    list_display = ('id', 'name', 'short_description', 'category', 'created_at')
     list_filter = ('category',)
+
+    @admin.display(description='Description')
+    def short_description(self, obj):
+        return obj.description[:50] + '...' if len(obj.description) > 50 else obj.description
 
 
 @admin.register(ProductTag)
