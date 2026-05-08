@@ -1,8 +1,86 @@
+{% load static %}
 <html>
   <head>
     <title>Product Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'product/style.css' %}">
   </head>
   <body>
-    <h1>Product Catalog</h1>
+    <main class="page">
+      <h1 class="page__title">Django Product Catalog</h1>
+
+      <form class="search-form" method="get">
+        <div class="search-form__group">
+          <label class="search-form__label" for="description">Search by description:</label>
+          <input type="text" id="description" name="description" value="{{ description }}">
+        </div>
+
+        {% if categories %}
+        <div class="search-form__group">
+          <span class="search-form__label">Category:</span>
+          {% for category in categories %}
+            <label>
+              <input type="checkbox" name="category_ids" value="{{ category.id }}"
+                {% if category.id in selected_category_ids %}checked{% endif %}>
+              {{ category.name }}
+            </label>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if tags %}
+        <div class="search-form__group">
+          <span class="search-form__label">Tags:</span>
+          {% for tag in tags %}
+            <label>
+              <input type="checkbox" name="tag_ids" value="{{ tag.id }}"
+                {% if tag.id in selected_tag_ids %}checked{% endif %}>
+              {{ tag.name }}
+            </label>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="search-form__actions">
+          <button type="submit">Search</button>
+          <a href="{% url 'index' %}" class="search-form__clear">Clear</a>
+        </div>
+      </form>
+
+      <hr>
+
+      <div class="product-list">
+        <div class="product-list__header">
+          <h2 class="product-list__title">Products</h2>
+          <p class="product-list__count">{{ products|length }} product(s) found</p>
+        </div>
+
+        <table class="product-list__table" border="1">
+          <thead>
+            <tr>
+              <th class="product-list__cell">Name</th>
+              <th class="product-list__cell">Description</th>
+              <th class="product-list__cell">Category</th>
+              <th class="product-list__cell">Tags</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td class="product-list__cell">{{ product.name }}</td>
+                <td class="product-list__cell">{{ product.description }}</td>
+                <td class="product-list__cell">{{ product.category.name }}</td>
+                <td class="product-list__cell">{% for tag in product.tags.all %}{{ tag.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</td>
+              </tr>
+            {% empty %}
+              <tr>
+                <td class="product-list__cell" colspan="4">No products found.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </main>
   </body>
 </html>

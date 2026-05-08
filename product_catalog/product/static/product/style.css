@@ -1,0 +1,42 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+}
+
+/* page */
+.page {
+  padding-bottom: 32px;
+}
+
+/* search-form */
+.search-form__group {
+  margin-bottom: 8px;
+}
+
+.search-form__label {
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.search-form__actions {
+  margin-top: 16px;
+}
+
+.search-form__clear {
+  margin-left: 8px;
+}
+
+/* product-list */
+.product-list {
+  display: inline-block;
+}
+
+.product-list__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-list__cell {
+  padding: 4px 6px;
+}
