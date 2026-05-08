@@ -9,7 +9,8 @@ A Django project that models products, categories, and tags with search and filt
 ```bash
 cp .env.example .env
 make install
-make setup
+make migrate
+make seed
 make up
 ```
 
@@ -20,10 +21,11 @@ Open http://127.0.0.1:8000
 | Command | Description |
 |---|---|
 | `make install` | Create virtualenv and install dependencies |
-| `make setup` | Apply migrations and populate sample data |
-| `make migrate` | Apply database migrations only |
+| `make migrate` | Apply database migrations |
+| `make seed` | Populate seed data |
 | `make up` | Start development server |
 | `make test` | Run tests |
+| `make manage cmd="<command>"` | Run any Django management command |
 
 ## Design Notes
 

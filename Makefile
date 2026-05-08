@@ -7,7 +7,7 @@ install:
 migrate:
 	$(MANAGE) migrate
 
-setup: migrate
+seed:
 	$(MANAGE) seed
 
 up:
@@ -15,3 +15,6 @@ up:
 
 test:
 	$(MANAGE) test product
+
+manage:
+	$(MANAGE) $(cmd)
