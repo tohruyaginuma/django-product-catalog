@@ -42,9 +42,7 @@ class ProductTag(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        constraints = [
-            models.UniqueConstraint(fields=['product', 'tag'], name='producttag_product_tag_unique')
-        ]
+        constraints = [models.UniqueConstraint(fields=['product', 'tag'], name='producttag_product_tag_unique')]
 
     def __str__(self):
         return f'{self.product} - {self.tag}'

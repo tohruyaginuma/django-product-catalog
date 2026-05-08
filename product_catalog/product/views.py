@@ -4,8 +4,8 @@ from django.http import HttpResponseBadRequest
 from django.shortcuts import render
 
 from product.services.category_service import list_categories
-from product.services.tag_service import list_tags
 from product.services.product_query_service import list_products
+from product.services.tag_service import list_tags
 
 logger = logging.getLogger(__name__)
 

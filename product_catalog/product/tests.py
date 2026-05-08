@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from product.models import Category, Tag, Product
+from product.models import Category, Product, Tag
 from product.services.product_query_service import list_products
 
 
