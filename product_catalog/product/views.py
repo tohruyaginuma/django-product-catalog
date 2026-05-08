@@ -29,7 +29,7 @@ def index(request):
 
     logger.info('list products description=%s category_ids=%s tag_ids=%s', description, category_ids, tag_ids)
 
-    products = list_products(
+    products, product_count = list_products(
         description=description,
         category_ids=category_ids,
         tag_ids=tag_ids,
@@ -39,6 +39,7 @@ def index(request):
 
     context = {
         'products': products,
+        'product_count': product_count,
         'categories': categories,
         'tags': tags,
         'selected_category_ids': category_ids,

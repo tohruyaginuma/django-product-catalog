@@ -13,4 +13,5 @@ def list_products(description=None, category_ids=None, tag_ids=None):
     if tag_ids:
         qs = qs.filter(tags__id__in=tag_ids)
 
-    return qs.distinct()
+    products = list(qs.distinct().order_by('id'))
+    return products, len(products)

@@ -2,4 +2,4 @@ from product.models import Tag
 
 
 def list_tags():
-    return Tag.objects.all()
+    return Tag.objects.order_by('id')
