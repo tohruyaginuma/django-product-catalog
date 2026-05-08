@@ -33,4 +33,9 @@ Services are split by responsibility:
 ## AI Usage
 
 This project was developed with Claude Code assistance. All code has been reviewed and understood by the author. AI was used for:
-- Discussing design decisions (service layer structure, error handling, model explicity, frontend design)
+- Discussing design decisions:
+  - Service layer structure
+  - Error handling
+  - Model explicity
+  - Frontend design
+- Creating Makefile and README
